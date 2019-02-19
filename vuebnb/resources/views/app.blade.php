@@ -7,7 +7,12 @@
   <title>Vuebnb</title>
   <link rel="stylesheet" href="node_modules/open-sans-all/css/open-sans.css">
   <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
-  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <link rel="stylesheet" href="{{asset('css/style.css')}}" type="text/css">
+  <script type="text/javascript">
+    window.vuebnb_listing_model = "{!! addslashes(json_encode($model)) !!}"
+//    console.log(JSON.parse(model));
+  </script>
+
 </head>
 <body>
 <div id="toolbar">
@@ -65,7 +70,7 @@
  </div>
 </div>
 
-<script src="{{ asset('js/data.js') }}"></script>
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{asset('js/data.js')}}"></script>
+<script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>

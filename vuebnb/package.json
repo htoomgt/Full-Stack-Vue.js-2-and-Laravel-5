@@ -3,14 +3,17 @@
   "scripts": {
     "dev": "npm run development",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --display-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "cross-env NODE_ENV=development node_modules/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch-poll": "npm run watch -- --watch-poll",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch-poll": "npm run watch --watch-poll",
     "hot": "cross-env NODE_ENV=development node_modules/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "prod": "npm run production",
     "production": "cross-env NODE_ENV=production node_modules/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
     "axios": "^0.18",
+    "browser-sync": "^2.26.3",
+    "browser-sync-webpack-plugin": "2.0.1",
+    "core-js": "^2.6.5",
     "cross-env": "^5.2.0",
     "font-awesome": "^4.7.0",
     "laravel-mix": "^4.0.14",
@@ -22,7 +25,9 @@
     "vue-template-compiler": "^2.6.6"
   },
   "dependencies": {
+    "dotenv": "^6.2.0",
     "selfupdate": "^1.1.0",
+    "watch": "^1.0.2",
     "webpack": "^4.29.3"
   }
 }

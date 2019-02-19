@@ -1,5 +1,5 @@
 <?php
-
+use App\Listing;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,5 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('app');
+    //return view('welcome');
+    return "Welsome from Vuevnb";
 });
+
+/*Route::get('/listings/{listing}', function(Listing $listing){
+    $model = $listing->toArray();
+    return view('app', ['model' => $model]); 
+});*/
+
+Route::get('/listings/{listing}', 'ListingController@get_listing_web');
+
