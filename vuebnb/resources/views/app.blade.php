@@ -60,20 +60,22 @@
 	  		</div>
 	  	</div>
   </div>
- <!--lightbox image-->
+ <!--light-box image-->
  <div id="modal" v-bind:class="{ show : modalOpen }"> 
    <button v-on:click="modalOpen = false" class="modal-close">
      &times;
    </button>
-   <div class="modal-content">
+<!--   <div class="modal-content">
      <img src="{{ asset('images/header.jpg') }}"/>
-   </div>
- </div>
-  
-  <!--Customized Image Commponent-->
+   </div>-->
+     
+   <!--Customized Image Component-->
   <div class="modal-content">
     <image-carousel></image-carousel>
   </div>
+ </div>
+  @{{ message }}
+  
 </div>
 
 <script src="{{asset('js/data.js')}}"></script>

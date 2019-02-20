@@ -4,6 +4,29 @@ import "core-js/fn/object/assign";
 let model = JSON.parse(window.vuebnb_listing_model);
 model = populateAmenitiesAndPrices(model);
 
+Vue.component('image-carousel', {
+    template : `
+        <div class="image-carousel"> 
+            <img v-bind:src="image" />
+        </div>
+    `,
+    data(){
+        return {
+            images : [
+                '/images/1/Image_1.jpg',
+                '/images/1/Image_2.jpg',
+                '/images/1/Image_3.jpg',
+                '/images/1/Image_4.jpg'
+            ],
+            index : 1
+        }
+    },
+    computed:{
+        image(){
+            return this.images[this.index];
+        }
+    }
+});
 
 var app = new Vue({
 	el:"#app",
@@ -19,7 +42,13 @@ var app = new Vue({
             prices: model.prices,
             contracted: true,
             modalOpen: false,
+            val: 1
         }),
+        computed: {
+            message(){
+                return `The value is ${this.val}`
+            }
+        },
 	methods: {
 		escapeKeyListener(evt) {
 		  if (evt.keyCode === 27 && app.modalOpen) {
@@ -44,6 +73,10 @@ var app = new Vue({
 	    document.removeEventListener('keyup', this.escapeKeyListener);
 	}
 });
+
+setTimeout(function(){
+    app.val = 2;
+}, 2000);
 
 
 
