@@ -17,7 +17,7 @@
 <body>
 <div id="toolbar">
   <img class="icon" src="{{ asset('images/logo.png') }}">
-  <h1>vuebnb</h1>
+  <h1>vuebnb</h1>   
 </div>
 <div id="app">
 	<div class="header">
@@ -60,6 +60,7 @@
 	  		</div>
 	  	</div>
   </div>
+ <!--lightbox image-->
  <div id="modal" v-bind:class="{ show : modalOpen }"> 
    <button v-on:click="modalOpen = false" class="modal-close">
      &times;
@@ -68,6 +69,11 @@
      <img src="{{ asset('images/header.jpg') }}"/>
    </div>
  </div>
+  
+  <!--Customized Image Commponent-->
+  <div class="modal-content">
+    <image-carousel></image-carousel>
+  </div>
 </div>
 
 <script src="{{asset('js/data.js')}}"></script>
