@@ -8,6 +8,10 @@ Vue.component('image-carousel', {
     template : `
         <div class="image-carousel"> 
             <img v-bind:src="image" />
+            <div class="controls">
+                <carousel-control></carousel-control>
+                <carousel-control></carousel-control>
+            </div>
         </div>
     `,
     data(){
@@ -24,6 +28,11 @@ Vue.component('image-carousel', {
     computed:{
         image(){
             return this.images[this.index];
+        }
+    },
+    components : {
+        'carousel-control' : {
+            template : `<i class="carosel-control fa fa-2x fa-chevron-left"></i>`
         }
     }
 });
