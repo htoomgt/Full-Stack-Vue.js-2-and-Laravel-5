@@ -7,23 +7,19 @@ model = populateAmenitiesAndPrices(model);
 Vue.component('image-carousel', {
     template : `
         <div class="image-carousel"> 
-            <img v-bind:src="image" />
+            <img :src="image" />
             <div class="controls">
-                <carousel-control></carousel-control>
-                <carousel-control></carousel-control>
+                <carousel-control dir="left"  @change-image="changeImage"></carousel-control>
+                <carousel-control dir="right" @change-image="changeImage"></carousel-control>
             </div>
         </div>
     `,
+    props:['images'],
     data(){
         return {
-            images : [
-                '/images/1/Image_1.jpg',
-                '/images/1/Image_2.jpg',
-                '/images/1/Image_3.jpg',
-                '/images/1/Image_4.jpg'
-            ],
-            index : 1
+            index: 0
         }
+    
     },
     computed:{
         image(){
@@ -32,9 +28,34 @@ Vue.component('image-carousel', {
     },
     components : {
         'carousel-control' : {
-            template : `<i class="carosel-control fa fa-2x fa-chevron-left"></i>`
+            template: `<i :class="classes" @click="clicked"></i>`,
+            props: [ 'dir' ],
+            computed: {
+                classes() {
+                        return 'carousel-control fa fa-2x fa-chevron-' + this.dir;
+                    }
+                },
+            methods: {
+                clicked() {
+                        this.$emit('change-image', this.dir == 'left' ? -1 : 1);
+                    }
+                }
+            }
+        
+    },
+    methods : {
+        changeImage(val) {
+            let newVal =  this.index + parseInt(val);
+            if(newVal < 0){
+                this.index = this.images.length -1;
+            } else if (newVal === this.images.length){
+                this.index = 0;
+            } else {
+                this.index = newVal;
+            }
         }
     }
+    
 });
 
 var app = new Vue({

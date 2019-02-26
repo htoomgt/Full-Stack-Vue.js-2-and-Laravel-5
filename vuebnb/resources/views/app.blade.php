@@ -71,14 +71,14 @@
      
    <!--Customized Image Component-->
   <div class="modal-content">
-    <image-carousel></image-carousel>
+    <image-carousel :images="images"></image-carousel>
   </div>
  </div>
   @{{ message }}
   
 </div>
 
-<script src="{{asset('js/data.js')}}"></script>
+<!--<script src="{{asset('js/data.js')}}"></script>-->
 <script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>
