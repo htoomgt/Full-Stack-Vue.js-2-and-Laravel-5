@@ -1,10 +1,12 @@
 import Vue from 'vue';
 import { populateAmenitiesAndPrices } from './helpers';
 import "core-js/fn/object/assign";
+//import MyComponent from "./components/MyComponent.vue";
+import ImageCarousel from './components/ImageCarousel.vue';
 let model = JSON.parse(window.vuebnb_listing_model);
 model = populateAmenitiesAndPrices(model);
 
-Vue.component('image-carousel', {
+/*Vue.component('image-carousel', {
     template : `
         <div class="image-carousel"> 
             <img :src="image" />
@@ -56,7 +58,7 @@ Vue.component('image-carousel', {
         }
     }
     
-});
+});*/ 
 
 var app = new Vue({
 	el:"#app",
@@ -101,7 +103,10 @@ var app = new Vue({
 	  },
 	destroyed: function () {
 	    document.removeEventListener('keyup', this.escapeKeyListener);
-	}
+	},
+        components:{
+            ImageCarousel
+        }
 });
 
 setTimeout(function(){
