@@ -22,8 +22,9 @@
 </div>
 <div id="app">
 	<div class="header">
-		<div class="header-img" v-bind:style="headerImageStyle" v-on:click="modalOpen = true"></div>
-		<button class="view-photos" v-on:click="modalOpen = true">View Photos</button>
+		<div class="header-img" :style="headerImageStyle" @click="openModal">
+                <button class="view-photos">View Photos</button>
+    </div>
 	</div>
  	<div class="container">
   		<div class="heading">
@@ -62,19 +63,9 @@
 	  	</div>
   </div>
  <!--light-box image-->
- <div id="modal" v-bind:class="{ show : modalOpen }"> 
-   <button v-on:click="modalOpen = false" class="modal-close">
-     &times;
-   </button>
-<!--   <div class="modal-content">
-     <img src="{{ asset('images/header.jpg') }}"/>
-   </div>-->
-     
-   <!--Customized Image Component-->
-  <div class="modal-content">
+ <modal-window ref="imagemodal">
     <image-carousel :images="images"></image-carousel>
-  </div>
- </div>
+  </modal-window>
   @{{ message }}
   
 </div>

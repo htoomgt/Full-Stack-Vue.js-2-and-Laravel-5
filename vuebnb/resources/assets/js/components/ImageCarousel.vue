@@ -20,7 +20,7 @@
 
         },
         components:{
-           CarouselControl
+           'carousel-control' :CarouselControl
         },
         computed:{
             image(){
